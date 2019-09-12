@@ -4,6 +4,7 @@ namespace Sixlive\TextCopy;
 
 use Closure;
 use Laravel\Nova\Fields\Field;
+use Laravel\Nova\Fields\Text;
 
 class TextCopy extends Field
 {
@@ -91,5 +92,15 @@ class TextCopy extends Field
         ]);
 
         return $this;
+    }
+
+    /**
+     * Display the field as raw HTML using Vue.
+     *
+     * @return $this
+     */
+    public function asHtml()
+    {
+        return $this->withMeta(['asHtml' => true]);
     }
 }

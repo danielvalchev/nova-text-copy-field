@@ -1,6 +1,7 @@
 <template>
     <div class="flex" @mouseover="hover = true" @mouseleave="hover = false">
-        <div class="flex-no-shrink">{{ fieldDisplayValue }}</div>
+        <div class="flex-no-shrink" v-if="!shouldDisplayAsHtml">{{ fieldDisplayValue }}</div>
+        <div class="flex-no-shrink" v-if="shouldDisplayAsHtml" v-html="fieldDisplayValue"></div>
         <copy-button
             :value="copyFieldValue"
             :title="copyButtonTitleValue"
@@ -37,7 +38,10 @@ export default {
             }
 
             return true
-        }
+        },
+        shouldDisplayAsHtml() {
+            return this.field.asHtml
+        },
     }
 }
 </script>
