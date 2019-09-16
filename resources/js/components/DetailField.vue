@@ -6,6 +6,7 @@
             <copy-button
                 :value="copyFieldValue"
                 :title="copyButtonTitleValue"
+                v-if="hasCopyValue"
                 :class="['w-4 mx-3', {'invisible': ! shouldShowButton}]" />
         </div>
     </panel-item>
@@ -45,6 +46,9 @@ export default {
         shouldDisplayAsHtml() {
             return this.field.asHtml
         },
+        hasCopyValue() {
+            return this.field.copy_value && this.field.value !== '—';
+        }
     }
 }
 </script>

@@ -12,6 +12,7 @@
                     :value="copyFieldValue"
                    :title="copyButtonTitleValue"
                    class="w-4 mx-3"
+                   v-if="hasCopyValue"
               />
             </div>
         </template>
@@ -59,6 +60,9 @@ export default {
         copyFieldValue() {
             return copyValue(this.field)
         },
+        hasCopyValue() {
+            return this.field.copy_value && this.field.value !== '—';
+        }
     }
 }
 </script>

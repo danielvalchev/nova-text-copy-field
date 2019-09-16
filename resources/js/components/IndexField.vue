@@ -6,6 +6,7 @@
             :value="copyFieldValue"
             :title="copyButtonTitleValue"
             :class="['w-4 mx-3', {'invisible': ! shouldShowButton}]"
+            v-if="hasCopyValue"
         />
     </div>
 </template>
@@ -42,6 +43,9 @@ export default {
         shouldDisplayAsHtml() {
             return this.field.asHtml
         },
+        hasCopyValue() {
+            return this.field.copy_value && this.field.value !== '—';
+        }
     }
 }
 </script>
